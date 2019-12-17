@@ -1,0 +1,14 @@
+{
+  "home" : {
+    "content" : {
+      "landing-description" : {
+        "text" : "Boilerplate code for an editable Gatsby site"
+      },
+      "landing-title" : {
+        "text" : "Editable Gatsby Starter"
+      }
+    },
+    "slug" : "/",
+    "title" : "Editable Gatsby Starter"
+  }
+}

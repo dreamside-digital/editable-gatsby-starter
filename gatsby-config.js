@@ -32,6 +32,7 @@ module.exports = {
         icon: "static/icon.png" // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-source-firebase-nl",
@@ -56,6 +57,12 @@ module.exports = {
       options: {
         precision: 8,
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        //trackingId: `ADD YOUR TRACKING ID HERE`,
+      },
+    },
   ]
 };
