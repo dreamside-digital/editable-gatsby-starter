@@ -1,30 +1,26 @@
 
 let activeEnv =
-  process.env.GATSBY_FIREBASE_ENVIRONMENT || process.env.NODE_ENV || "development"
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
 console.log(`Using environment config: '${activeEnv}'`)
-
-const firebaseConfig = require(`./config/firebase-config.${activeEnv}.json`)
 
 require("dotenv").config({
   path: `.env.${activeEnv}`,
 })
 
+const firebaseConfig = require(`./config/firebase-config.${process.env.GATSBY_FIREBASE_ENVIRONMENT}.json`)
+
 module.exports = {
   siteMetadata: {
-    title: process.env.GATSBY_PROJECT_TITLE,
-    description: process.env.GATSBY_PROJECT_DESCRIPTION,
-    social: {
-      twitter: ``,
-    },
+    title: ``,
   },
   pathPrefix: `/`,
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: process.env.GATSBY_PROJECT_TITLE,
-        short_name: process.env.GATSBY_PROJECT_SHORT_NAME,
+        name: "",
+        short_name: "",
         start_url: "/",
         background_color: "#000",
         theme_color: "#FCB239", // yellow
@@ -32,7 +28,6 @@ module.exports = {
         icon: "static/icon.png" // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-source-firebase-nl",
@@ -57,12 +52,6 @@ module.exports = {
       options: {
         precision: 8,
       },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
+    }
   ]
 };
